@@ -108,7 +108,7 @@ form {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 8px 8px 5px rgba(253, 253, 253, 0.89);
+    box-shadow: 8px 8px 5px lightcoral;
 }
 
 form h3 {
@@ -199,12 +199,14 @@ form h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    /* gap: 15px; */
 }
 
 .featured-card {
+    width: 24%;
     background-color: lightcoral;
     padding-bottom: 20px;
+    border-radius: 10px;
 }
 
 .featured-card-image img {

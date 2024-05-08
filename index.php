@@ -15,7 +15,7 @@
 
 <body>
     <!-- header section start -->
-    <header>
+    <header class="container">
         <nav>
             <div>
                 <a href="#">
@@ -43,7 +43,7 @@
     <!-- main Start Hare -->
     <main>
         <!-- hear section start -->
-        <section>
+        <section class="container">
             <div class="hero">
                 <div class="hero-content">
                     <h1>Inspiration, Innovation and Discovery</h1>
@@ -79,7 +79,7 @@
         <!-- hear section start -->
 
         <!-- offer section start -->
-        <section>
+        <section class="container">
             <div class="offer-content">
                 <h4 class="offer-title">Guaranteed Success</h4>
                 <h2 class="offer-subtitle">What We Offer</h2>
@@ -122,49 +122,51 @@
 
         <!-- featured section start -->
         <section class="featured-container">
-            <div class="offer-content">
-                <h2 class="offer-subtitle">Our Featured Courses</h2>
-                <p>Our featured courses are selected through a rigorous process and uniquely created for each semester. They cover a lot of topics and are available both online and offline.</p>
-            </div>
-            <div class="featured-card-group">
-                <!-- card-1 -->
-                <div class="featured-card">
-                    <div class="featured-card-image">
-                        <img src="assets/images/marketing.jpg" alt="">
-                    </div>
-                    <div class="featured-card-content">
-                        <h3 class="offer-card-content-title">Online Marketing</h3>
-                        <p>Ronal Richard</p>
-                    </div>
+            <div class="container">
+                <div class="offer-content">
+                    <h2 class="offer-subtitle">Our Featured Courses</h2>
+                    <p>Our featured courses are selected through a rigorous process and uniquely created for each semester.<br> They cover a lot of topics and are available both online and offline.</p>
                 </div>
-                <!-- card-2 -->
-                <div class="featured-card">
-                    <div class="featured-card-image">
-                        <img src="assets/images/hr.jpg" alt="">
+                <div class="featured-card-group">
+                    <!-- card-1 -->
+                    <div class="featured-card">
+                        <div class="featured-card-image">
+                            <img src="assets/images/marketing.jpg" alt="">
+                        </div>
+                        <div class="featured-card-content">
+                            <h3 class="offer-card-content-title">Online Marketing</h3>
+                            <p>Ronal Richard</p>
+                        </div>
                     </div>
-                    <div class="featured-card-content">
-                        <h3 class="offer-card-content-title">HR Management</h3>
-                        <p>Ralph Edward</p>
+                    <!-- card-2 -->
+                    <div class="featured-card">
+                        <div class="featured-card-image">
+                            <img src="assets/images/hr.jpg" alt="">
+                        </div>
+                        <div class="featured-card-content">
+                            <h3 class="offer-card-content-title">HR Management</h3>
+                            <p>Ralph Edward</p>
+                        </div>
                     </div>
-                </div>
-                <!-- card-3 -->
-                <div class="featured-card">
-                    <div class="featured-card-image">
-                        <img src="assets/images/finance.jpg" alt="">
+                    <!-- card-3 -->
+                    <div class="featured-card">
+                        <div class="featured-card-image">
+                            <img src="assets/images/finance.jpg" alt="">
+                        </div>
+                        <div class="featured-card-content">
+                            <h3 class="offer-card-content-title">Financial Analysis</h3>
+                            <p>Emma Smith</p>
+                        </div>
                     </div>
-                    <div class="featured-card-content">
-                        <h3 class="offer-card-content-title">Financial Analysis</h3>
-                        <p>Emma Smith</p>
-                    </div>
-                </div>
-                <!-- card-4 -->
-                <div class="featured-card">
-                    <div class="featured-card-image">
-                        <img src="assets/images/web.jpg" alt="">
-                    </div>
-                    <div class="featured-card-content">
-                        <h3 class="offer-card-content-title">Web Technology</h3>
-                        <p>Karyn Murphy</p>
+                    <!-- card-4 -->
+                    <div class="featured-card">
+                        <div class="featured-card-image">
+                            <img src="assets/images/web.jpg" alt="">
+                        </div>
+                        <div class="featured-card-content">
+                            <h3 class="offer-card-content-title">Web Technology</h3>
+                            <p>Karyn Murphy</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
 .header-logo {
@@ -189,10 +190,12 @@ form h3 {
 }
 
 /* featured section */
+
 .featured-container {
-    /* background-color: ; */
+    background-color: lightcoral;
     padding-top: 30px;
     padding-bottom: 50px;
+    color: #fff;
 }
 
 .featured-card-group {
@@ -204,18 +207,19 @@ form h3 {
 
 .featured-card {
     width: 24%;
-    background-color: lightcoral;
+    background-color: #fff;
     padding-bottom: 20px;
     border-radius: 10px;
 }
 
 .featured-card-image img {
     height: 200px;
+    border-radius: 10px;
 }
 
 .featured-card-content {
     text-align: center;
-    color: #fff;
+    color: #000;
     margin-top: 10px;
 }
 

@@ -18,19 +18,19 @@
     <header class="container">
         <nav>
             <div>
-                <a href="#">
+                <a href="index.php">
                     <img class="header-logo" src="assets/images/logo-1.png" alt="">
                 </a>
             </div>
             <div>
                 <ul class="header-icon" id="header-icon">
-                    <li><a href="#">HOME</a></li>
+                    <li><a href="index.php">HOME</a></li>
                     <li><a href="#">COURSES</a></li>
                     <li><a href="#">FEATURES</a></li>
                     <li><a href="#">EVENTS</a></li>
                     <li><a href="#">BLOG</a></li>
                     <li><a href="#">CONTACT</a></li>
-                    <li><a href="login.php"><button class="btn-subs">Login</button></a></li>
+                    <li><a href="login.php"><button class="btn-subs">LOG IN</button></a></li>
                 </ul>
             </div>
             <div class="btn-box">
@@ -51,23 +51,19 @@
                     <button class="hero-btn">Learn More</button>
                 </div>
                 <div class="hero-form">
-                    <form>
+                    <form class="form-hero">
                         <h3>Admission Form</h3>
                         <div>
                             <input type="text" name="name" id="name-field" placeholder="Your Name" class="hero-input">
-                            <!-- <label for="name-field">Your Name</label> -->
                         </div>
                         <div>
                             <input type="email" name="email" id="email-field" placeholder="Your Email" class="hero-input">
-                            <!-- <label for="email-field">Your Email</label> -->
                         </div>
                         <div>
                             <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
-                            <!-- <label for="number-field">Phone Number</label> -->
                         </div>
                         <div>
                             <input type="text" name="class" id="class-field" placeholder="Your Class" class="hero-input">
-                            <!-- <label for="class-field">Your Class</label> -->
                         </div>
                         <div>
                             <input type="submit" value="Submit Form" class="input-submit">
@@ -128,53 +124,87 @@
                     <p>Our featured courses are selected through a rigorous process and uniquely created for each semester.<br> They cover a lot of topics and are available both online and offline.</p>
                 </div>
                 <div class="featured-card-group">
-                    <!-- card-1 -->
-                    <div class="featured-card">
-                        <div class="featured-card-image">
-                            <img src="assets/images/marketing.jpg" alt="">
+                    <?php for ($i = 0; $i <= 2; $i++) { ?>
+                        <!-- card-1 -->
+                        <div class="featured-card">
+                            <div class="featured-card-image">
+                                <img src="assets/images/marketing.jpg" alt="">
+                            </div>
+                            <div class="featured-card-content">
+                                <h3 class="offer-card-content-title">Online Marketing</h3>
+                                <p>Ronal Richard</p>
+                            </div>
                         </div>
-                        <div class="featured-card-content">
-                            <h3 class="offer-card-content-title">Online Marketing</h3>
-                            <p>Ronal Richard</p>
+                        <!-- card-2 -->
+                        <div class="featured-card">
+                            <div class="featured-card-image">
+                                <img src="assets/images/hr.jpg" alt="">
+                            </div>
+                            <div class="featured-card-content">
+                                <h3 class="offer-card-content-title">HR Management</h3>
+                                <p>Ralph Edward</p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- card-2 -->
-                    <div class="featured-card">
-                        <div class="featured-card-image">
-                            <img src="assets/images/hr.jpg" alt="">
+                        <!-- card-3 -->
+                        <div class="featured-card">
+                            <div class="featured-card-image">
+                                <img src="assets/images/finance.jpg" alt="">
+                            </div>
+                            <div class="featured-card-content">
+                                <h3 class="offer-card-content-title">Financial Analysis</h3>
+                                <p>Emma Smith</p>
+                            </div>
                         </div>
-                        <div class="featured-card-content">
-                            <h3 class="offer-card-content-title">HR Management</h3>
-                            <p>Ralph Edward</p>
+                        <!-- card-4 -->
+                        <div class="featured-card">
+                            <div class="featured-card-image">
+                                <img src="assets/images/web.jpg" alt="">
+                            </div>
+                            <div class="featured-card-content">
+                                <h3 class="offer-card-content-title">Web Technology</h3>
+                                <p>Karyn Murphy</p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- card-3 -->
-                    <div class="featured-card">
-                        <div class="featured-card-image">
-                            <img src="assets/images/finance.jpg" alt="">
-                        </div>
-                        <div class="featured-card-content">
-                            <h3 class="offer-card-content-title">Financial Analysis</h3>
-                            <p>Emma Smith</p>
-                        </div>
-                    </div>
-                    <!-- card-4 -->
-                    <div class="featured-card">
-                        <div class="featured-card-image">
-                            <img src="assets/images/web.jpg" alt="">
-                        </div>
-                        <div class="featured-card-content">
-                            <h3 class="offer-card-content-title">Web Technology</h3>
-                            <p>Karyn Murphy</p>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
         <!-- featured section end -->
+
+        <!-- teacher section start -->
+        <section class="teacher-section">
+            <div class="container">
+                <div class="offer-content">
+                    <h4 class="offer-title">People Behind Our Success</h4>
+                    <h2 class="offer-subtitle">Our Tutors</h2>
+                    <p>We employ highly experienced and qualified teachers who set the ground for all our programs and<br> courses. They are aimed to help you achieve more on your path to success</p>
+                </div>
+                <div class="teacher-card-group">
+                    <?php for ($i = 0; $i <= 5; $i++) { ?>
+                        <!-- card-1 -->
+                        <div class="teacher-card">
+                            <div class="teacher-image">
+                                <img src="assets/images/teacher.jpg" alt="">
+                            </div>
+                            <div>
+                                <h4 class="teacher-name">Leslie Alexander</h4>
+                                <h5 class="teacher-position">Tutor</h5>
+                                <p class="teacher-sub-title">Leslie joined our team in 2010 as a marketing tutor.</p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </section>
+        <!-- teacher section end -->
     </main>
     <!-- main end Hare -->
-    <footer></footer>
+
+    <!-- footer start hare -->
+    <footer>
+        <p class="footer-title">© 2021 SMS. All rights reserved. Privacy Policy</p>
+    </footer>
+    <!-- footer emd hare -->
 
 
     <script src="assets/js/main.js"></script>

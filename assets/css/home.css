@@ -1,4 +1,5 @@
 /* header style */
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -14,7 +15,7 @@ nav {
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .header-icon li a {
@@ -26,13 +27,6 @@ nav {
 
 .header-icon li a:hover {
     color: #ea1538;
-}
-
-.btn-box {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
 }
 
 .btn-subs {
@@ -51,7 +45,7 @@ nav {
     cursor: pointer;
 }
 
-.nav-btn {
+.btn-box {
     display: none;
 }
 
@@ -202,7 +196,6 @@ form h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* gap: 15px; */
 }
 
 .featured-card {
@@ -225,6 +218,7 @@ form h3 {
 
 
 /* responsive */
+
 @media only screen and (max-width: 575.98px) {
     .header-icon {
         display: none;
@@ -236,18 +230,13 @@ form h3 {
         top: 70px;
         right: 0;
         z-index: 10;
-        background-color: #ea1538;
+        background-color: #fff;
         padding: 20px;
     }
 
-    .nav-btn {
+    .btn-box {
         display: block;
     }
-
-    .btn-subs {
-        display: none;
-    }
-
 }
 
 @media only screen and (min-width: 576px) and (max-width: 1030px) {
@@ -261,11 +250,11 @@ form h3 {
         top: 70px;
         right: 0;
         z-index: 10;
-        background-color: #ea1538;
+        background-color: #fff;
         padding: 20px;
     }
 
-    .nav-btn {
+    .btn-box {
         display: block;
     }
 }

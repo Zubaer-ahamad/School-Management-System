@@ -30,10 +30,10 @@
                     <li><a href="#">EVENTS</a></li>
                     <li><a href="#">BLOG</a></li>
                     <li><a href="#">CONTACT</a></li>
+                    <li><a href="login.php"><button class="btn-subs">Login</button></a></li>
                 </ul>
             </div>
             <div class="btn-box">
-                <button class="btn-subs">Subscribe</button>
                 <button class="nav-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
             </div>
         </nav>

@@ -42,7 +42,7 @@
 
     <!-- main Start Hare -->
     <main>
-        <!-- hear section start -->
+        <!-- hero section start -->
         <section class="container">
             <div class="hero">
                 <div class="hero-content">
@@ -72,7 +72,23 @@
                 </div>
             </div>
         </section>
-        <!-- hear section start -->
+        <!-- hero section end -->
+
+        <!-- about section start -->
+        <section class="container">
+            <div class="about-container">
+                <div class="offer-content about-content">
+                    <h2 class="offer-subtitle">About</h2>
+                    <p class="about-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam explicabo corrupti perspiciatis, quo hic eaque aspernatur, sint quasi nesciunt accusamus architecto dolorem quisquam. Maiores dignissimos, vero sit, aperiam quidem quis cumque facilis temporibus beatae optio accusamus eius. Ipsa ad ex voluptatem eius saepe porro iste voluptate, adipisci animi dicta ipsam.</p>
+                    <br>
+                    <p class="about-title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet vel blanditiis aut odio necessitatibus aspernatur illo, fugit cum, vero rerum eius libero sed laboriosam maiores facere sunt quibusdam officiis! Cupiditate.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/about.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        <!-- about section end -->
 
         <!-- offer section start -->
         <section class="container">

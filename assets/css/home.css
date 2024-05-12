@@ -45,6 +45,16 @@ nav {
     cursor: pointer;
 }
 
+.btn-user{
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: #ea1538;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 50%;
+}
+
 .btn-box {
     display: none;
 }

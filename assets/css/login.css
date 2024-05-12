@@ -1,5 +1,6 @@
 .login-section {
     margin-top: 150px;
+    height: 68vh;
 }
 
 .login-box {
@@ -31,7 +32,7 @@
     box-shadow: 8px 8px 5px #0000007e;
 }
 
-.login-btn-div{
+.login-btn-div {
     display: flex;
     justify-content: center;
 }
@@ -46,3 +47,9 @@
     margin-top: 30px;
     border-radius: 8px;
 }
+
+.error-message {
+    text-align: center;
+    margin-top: 30px;
+    color: #ea1538;
+};

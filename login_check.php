@@ -21,8 +21,10 @@ while ($row = $result->fetch_assoc()) {
         if ($email == $row['email'] && $password == $row['password']) {
             $_SESSION['login'] = true;
             if ($row['usertype'] == 'admin') {
+                $_SESSION['type'] = 'admin';
                 header('location:admin.php');
             } elseif ($row['usertype'] == 'student') {
+                $_SESSION['type'] = 'student';
                 header('location:student.php');
             }
         }

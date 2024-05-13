@@ -11,24 +11,33 @@
                 <button class="hero-btn">Learn More</button>
             </div>
             <div class="hero-form">
-                <form class="form-hero">
+                <div class="form-hero">
                     <h3>Admission Form</h3>
-                    <div>
-                        <input type="text" name="name" id="name-field" placeholder="Your Name" class="hero-input">
-                    </div>
-                    <div>
-                        <input type="email" name="email" id="email-field" placeholder="Your Email" class="hero-input">
-                    </div>
-                    <div>
-                        <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
-                    </div>
-                    <div>
-                        <input type="text" name="class" id="class-field" placeholder="Your Class" class="hero-input">
-                    </div>
-                    <div>
-                        <input type="submit" value="Submit Form" class="input-submit">
-                    </div>
-                </form>
+                    <form action="data_insert.php" method="post">
+                        <div>
+                            <input type="text" name="name" id="name-field" placeholder="Your Name" class="hero-input">
+                        </div>
+                        <div>
+                            <input type="email" name="email" id="email-field" placeholder="Your Email" class="hero-input">
+                        </div>
+                        <div>
+                            <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
+                        </div>
+                        <div>
+                            <select name="type" class="hero-input">
+                                <option disabled selected>Select</option>
+                                <option value="2">Admin</option>
+                                <option value="2">Student</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" name="password" id="password-field" placeholder="Your Password" class="hero-input">
+                        </div>
+                        <div>
+                            <input type="submit" name="submit" value="Submit Form" class="input-submit">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

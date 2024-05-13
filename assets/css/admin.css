@@ -1,0 +1,39 @@
+.admin-nav {
+    background-color: skyblue;
+    padding: 20px;
+}
+
+.admin-title {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+aside {
+    width: 16%;
+    height: 100%;
+    background-color: #424a5b;
+    position: fixed;
+    padding-top: 5%;
+    text-align: center;
+}
+
+ul li {
+    padding-bottom: 30px;
+    font-size: 15px;
+}
+
+ul li a {
+    color: #fff;
+    font-weight: 700;
+}
+
+ul li a:hover {
+    color: skyblue;
+}
+
+.content{
+    margin-left: 20%;
+    margin-top: 5%;
+}

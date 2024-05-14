@@ -1,3 +1,16 @@
+<?php
+error_reporting(0);
+session_start();
+session_destroy();
+if (isset($_SESSION['insert'])) {
+    $message = $_SESSION['insert'];
+    echo "<script type='text/javascript'>
+    alert('$message')
+    </script>";
+}
+?>
+
+
 <?php include('header.php'); ?>
 
 <!-- main Start Hare -->
@@ -24,14 +37,7 @@
                             <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
                         </div>
                         <div>
-                            <select name="type" class="hero-input">
-                                <option disabled selected>Select</option>
-                                <option value="2">Admin</option>
-                                <option value="2">Student</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="text" name="password" id="password-field" placeholder="Your Password" class="hero-input">
+                            <textarea name="message" class="message-input" maxlength="50"></textarea>
                         </div>
                         <div>
                             <input type="submit" name="submit" value="Submit Form" class="input-submit">

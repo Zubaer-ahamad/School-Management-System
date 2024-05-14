@@ -5,6 +5,18 @@ if (!isset($_SESSION['login'])) {
 } elseif ($_SESSION['type'] == 'student') {
     header('location:login.php');
 }
+
+$conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed");
+}
+
+$sql = "SELECT * FROM users WHERE usertype = 'student' ";
+
+$result = $conn->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -32,11 +44,32 @@ if (!isset($_SESSION['login'])) {
     <main>
         <!-- content start -->
         <section>
-            <div class="content">
-                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, molestiae!</h1>
-                <br>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint alias deleniti aspernatur delectus dolore nam laboriosam maiores corporis animi quaerat ad ipsum tempore suscipit culpa officia ut, nihil commodi consequuntur?</p>
-            </div>
+            <center>
+                <div class="content">
+                    <h1>All The Student</h1>
+                    <br><br>
+                    <table>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Password</th>
+                            <th>Delete</th>
+                        </tr>
+                        <?php while ($row = $result->fetch_assoc()) { ?>
+                            <tr>
+                                <td><?php echo "{$row['username']}"; ?></td>
+                                <td><?php echo "{$row['email']}"; ?></td>
+                                <td><?php echo "{$row['phone']}"; ?></td>
+                                <td><?php echo "{$row['password']}"; ?></td>
+                                <td><a href='delete.php?student_id=<?php echo "{$row['id']}"; ?>'><button class="btn-user">
+                                            <i class="fa-solid fa-x"></i>
+                                        </button></a></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </center>
         </section>
         <!-- content end -->
     </main>

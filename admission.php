@@ -4,7 +4,14 @@ if (!isset($_SESSION['login'])) {
     header('location:login.php');
 } elseif ($_SESSION['type'] == 'student') {
     header('location:login.php');
-}
+};
+
+$conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
+if ($conn->connect_errno) {
+    die('Connection Error');
+};
+$Sql = "SELECT * FROM admission";
+$result = $conn->query($Sql);
 ?>
 
 <!DOCTYPE html>
@@ -26,21 +33,30 @@ if (!isset($_SESSION['login'])) {
 </head>
 
 <body>
-    <?php include('sidebar.php'); ?>
+    <?php include 'sidebar.php'; ?>
 
-    <!-- main start -->
-    <main>
-        <!-- content start -->
-        <section>
-            <div class="content">
-                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, molestiae!</h1>
-                <br>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint alias deleniti aspernatur delectus dolore nam laboriosam maiores corporis animi quaerat ad ipsum tempore suscipit culpa officia ut, nihil commodi consequuntur?</p>
-            </div>
-        </section>
-        <!-- content end -->
-    </main>
-    <!-- main end -->
+    <div class="content">
+        <center>
+            <h1>Applied For Admission</h1>
+            <br><br>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                </tr>
+                <?php while ($row = $result->fetch_assoc()) { ?>
+                    <tr>
+                        <td><?php echo "{$row['name']}"; ?></td>
+                        <td><?php echo "{$row['email']}"; ?></td>
+                        <td><?php echo "{$row['phone']}"; ?></td>
+                        <td><?php echo "{$row['message']}"; ?></td>
+                    </tr>
+                <?php }; ?>
+            </table>
+        </center>
+    </div>
 </body>
 
 </html>

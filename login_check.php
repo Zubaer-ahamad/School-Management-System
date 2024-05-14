@@ -7,7 +7,7 @@ if ($conn == false) {
     die('Connection Error');
 };
 
-$sql = "SELECT * FROM student";
+$sql = "SELECT * FROM users";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {

@@ -33,7 +33,19 @@ ul li a:hover {
     color: skyblue;
 }
 
-.content{
+.content {
     margin-left: 20%;
     margin-top: 5%;
 }
+
+/* admission page style */
+
+table tr th,
+td {
+    border: 1px solid black;
+    padding: 30px 40px;
+    font-size: 15px;
+}
+
+/* add_student page style */
+

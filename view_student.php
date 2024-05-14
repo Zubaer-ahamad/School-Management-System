@@ -17,6 +17,13 @@ $sql = "SELECT * FROM users WHERE usertype = 'student' ";
 
 $result = $conn->query($sql);
 
+if (isset($_SESSION['delete'])) {
+    echo "<script type='text/javascript'>
+    alert('Data Deleted Successfully');
+    </script>";
+    unset($_SESSION['delete']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +61,7 @@ $result = $conn->query($sql);
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Password</th>
-                            <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                         <?php while ($row = $result->fetch_assoc()) { ?>
                             <tr>
@@ -62,9 +69,18 @@ $result = $conn->query($sql);
                                 <td><?php echo "{$row['email']}"; ?></td>
                                 <td><?php echo "{$row['phone']}"; ?></td>
                                 <td><?php echo "{$row['password']}"; ?></td>
-                                <td><a href='delete.php?student_id=<?php echo "{$row['id']}"; ?>'><button class="btn-user">
+                                <td>
+                                    <a href='delete.php?student_id=<?php echo "{$row['id']}"; ?>'>
+                                        <button class="btn-user">
                                             <i class="fa-solid fa-x"></i>
-                                        </button></a></td>
+                                        </button>
+                                    </a>
+                                    <a href='update.php?student_id=<?php echo "{$row['id']}"; ?>'>
+                                        <button class="btn-user btn-eye">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
                         <?php } ?>
                     </table>
@@ -74,6 +90,8 @@ $result = $conn->query($sql);
         <!-- content end -->
     </main>
     <!-- main end -->
+
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

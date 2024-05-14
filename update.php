@@ -6,42 +6,32 @@ if (!isset($_SESSION['login'])) {
     header('location:login.php');
 };
 
-
-if (isset($_POST['add_student'])) {
-    $conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed");
-    }
-
-    $user_name = $_POST['name'];
-    $user_number = $_POST['number'];
-    $user_email = $_POST['email'];
-    $user_password = $_POST['password'];
-    $user_type = "student";
-
-    $check = "SELECT * FROM users WHERE username ='$user_name' ";
-    $check_user = $conn->query($check);
-    $row_count = mysqli_num_rows($check_user);
-    if ($row_count) {
-        echo "<script type='text/javascript'>
-        alert('User Name Already Exist, Try Another One.');
-        </script>";
-    } else {
-
-        $Sql = "INSERT INTO users(username, phone, email, usertype, password) VALUES ('$user_name','$user_number', '$user_email', '$user_type', '$user_password')";
-        $result = $conn->query($Sql);
-        if ($result) {
-            echo "<script type='text/javascript'>
-        alert('Data Insert Successfully');
-        </script>";
-        } else {
-            echo "Failed To Update";
-        };
-    }
+$conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
+if ($conn->connect_error) {
+    die("Connect Error");
 };
 
+if ($_GET['student_id']) {
+    $user_id = $_GET['student_id'];
+    $sql = "SELECT * FROM users WHERE id = '$user_id'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+};
+
+if (isset($_POST['update_student'])) {
+    $update_name = $_POST['name'];
+    $update_number = $_POST['number'];
+    $update_email = $_POST['email'];
+    $update_password = $_POST['password'];
+    $id = $_GET['student_id'];
+    $mySql = "UPDATE users SET username='$update_name', phone='$update_number', email='$update_email', password='$update_password' WHERE id = '$id' ";
+    $result2 = $conn->query($mySql);
+    if ($result2) {
+        header('location:view_student.php');
+    } else {
+        echo "Failed To Update";
+    };
+}
 
 ?>
 
@@ -72,24 +62,24 @@ if (isset($_POST['add_student'])) {
         <section>
             <div class="content">
                 <center>
-                    <h1>Add Student</h1>
+                    <h1>Update Student</h1>
                     <br>
                     <br>
-                    <form action="#" method="post">
+                    <form action="#" method="POST">
                         <div>
-                            <input type="text" name="name" id="name-field" placeholder="Your Name" class="hero-input">
+                            <input type="text" name="name" id="name-field" value="<?php echo "{$row['username']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
+                            <input type="number" name="number" id="number-field" value="<?php echo "{$row['phone']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="email" name="email" id="email-field" placeholder="Your Email" class="hero-input">
+                            <input type="email" name="email" id="email-field" value="<?php echo "{$row['email']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="text" name="password" id="password-field" placeholder="Your Password" class="hero-input">
+                            <input type="text" name="password" id="password-field" value="<?php echo "{$row['password']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="submit" name="add_student" value="Add Student" class="input-submit">
+                            <input type="submit" name="update_student" value="Update Student" class="input-submit update-submit">
                         </div>
                     </form>
                 </center>

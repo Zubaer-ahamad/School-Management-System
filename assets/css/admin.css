@@ -36,6 +36,12 @@ ul li a:hover {
 .content {
     margin-left: 20%;
     margin-top: 5%;
+    margin-right: 3%;
+}
+
+.btn-eye,
+.update-submit {
+    background-color: green;
 }
 
 /* admission page style */
@@ -48,4 +54,3 @@ td {
 }
 
 /* add_student page style */
-

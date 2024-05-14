@@ -37,7 +37,7 @@ if (isset($_SESSION['insert'])) {
                             <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
                         </div>
                         <div>
-                            <textarea name="message" class="message-input" maxlength="50"></textarea>
+                            <textarea name="message" class="message-input" placeholder="Enter A Message" maxlength="50"></textarea>
                         </div>
                         <div>
                             <input type="submit" name="submit" value="Submit Form" class="input-submit">

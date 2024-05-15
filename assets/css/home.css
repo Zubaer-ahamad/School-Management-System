@@ -81,6 +81,7 @@ nav {
     align-items: center;
     margin-top: 20px;
     background: linear-gradient(-45deg, #ea1538 50%, transparent 50%);
+    margin-bottom: 100px;
 }
 
 .hero-content {
@@ -93,8 +94,8 @@ nav {
     margin-bottom: 15px;
 }
 
-.hero-content p {
-    font-weight: 600;
+.white-title {
+    color: #fff;
 }
 
 .hero-btn {
@@ -105,7 +106,7 @@ nav {
     background-color: #ea1538;
     color: #fff;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .hero-form {
@@ -165,6 +166,14 @@ nav {
     align-items: center;
 }
 
+.about-image {
+    width: 48%;
+}
+
+.about-image img {
+    width: 100%;
+}
+
 .about-content {
     width: 48%;
     text-align: start;
@@ -174,13 +183,6 @@ nav {
     text-align: justify;
 }
 
-.about-image {
-    width: 50%;
-}
-
-.about-image img {
-    width: 100%;
-}
 
 /* offer section */
 
@@ -252,7 +254,7 @@ nav {
     background-color: #fff;
     padding-bottom: 20px;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 18px;
 }
 
 .featured-card-image img {

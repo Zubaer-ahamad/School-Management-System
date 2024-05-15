@@ -6,40 +6,30 @@ if (!isset($_SESSION['login'])) {
     header('location:login.php');
 };
 
-
-if (isset($_POST['add_student'])) {
-    $conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed");
-    }
-
-    $user_name = $_POST['name'];
-    $user_number = $_POST['number'];
-    $user_email = $_POST['email'];
-    $user_password = $_POST['password'];
-    $user_type = "student";
-
-    $check = "SELECT * FROM users WHERE username ='$user_name' ";
-    $check_user = $conn->query($check);
-    $row_count = mysqli_num_rows($check_user);
-    if ($row_count) {
-        echo "<script type='text/javascript'>
-        alert('User Name Already Exist, Try Another One.');
-        </script>";
-    } else {
-
-        $Sql = "INSERT INTO users(username, phone, email, usertype, password) VALUES ('$user_name','$user_number', '$user_email', '$user_type', '$user_password')";
-        $result = $conn->query($Sql);
-        if ($result) {
-            header('location:view_student.php');
-        } else {
-            echo "Failed To Update";
-        };
-    }
+$conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
+if ($conn->connect_error) {
+    die("Connect Error");
 };
 
+if ($_GET['teacher_id']) {
+    $user_id = $_GET['teacher_id'];
+    $sql = "SELECT * FROM teachers WHERE id = '$user_id'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+};
+
+if (isset($_POST['update_teacher'])) {
+    $update_name = $_POST['name'];
+    $update_message = $_POST['message'];
+    $id = $_GET['teacher_id'];
+    $mySql = "UPDATE teachers SET name = '$update_name', description = '$update_message' WHERE id = '$id' ";
+    $result2 = $conn->query($mySql);
+    if ($result2) {
+        header('location:view_teacher.php');
+    } else {
+        echo "Failed To Update";
+    };
+}
 
 ?>
 
@@ -70,24 +60,24 @@ if (isset($_POST['add_student'])) {
         <section>
             <div class="content">
                 <center>
-                    <h1>Add Student</h1>
+                    <h1>Update Teacher</h1>
                     <br>
                     <br>
-                    <form action="#" method="post">
+                    <form action="#" method="POST">
                         <div>
-                            <input type="text" name="name" id="name-field" placeholder="Your Name" class="hero-input">
+                            <input type="text" name="name" id="name-field" value="<?php echo "{$row['name']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
+                            <textarea name="message" class="message-input"><?php echo "{$row['description']}"; ?></textarea>
                         </div>
                         <div>
-                            <input type="email" name="email" id="email-field" placeholder="Your Email" class="hero-input">
                         </div>
+                        <!-- <div> -->
+                            <!-- <img class="teacher-img" src="<?php echo "{$row['image']}"; ?>" alt=""> -->
+                            <!-- <input type="file" name="image" placeholder="Image" class="hero-input"> -->
+                        <!-- </div> -->
                         <div>
-                            <input type="text" name="password" id="password-field" placeholder="Your Password" class="hero-input">
-                        </div>
-                        <div>
-                            <input type="submit" name="add_student" value="Add Student" class="input-submit">
+                            <input type="submit" name="update_teacher" value="Update Teacher" class="input-submit update-submit">
                         </div>
                     </form>
                 </center>

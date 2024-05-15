@@ -8,6 +8,16 @@ if (isset($_SESSION['insert'])) {
     alert('$message')
     </script>";
 }
+
+$conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
+if ($conn->connect_error) {
+    die("Connect Error");
+};
+
+$sql = "SELECT * FROM teachers";
+
+$result = $conn->query($sql);
+
 ?>
 
 
@@ -20,7 +30,7 @@ if (isset($_SESSION['insert'])) {
         <div class="hero">
             <div class="hero-content">
                 <h1>Inspiration, Innovation and Discovery</h1>
-                <p>Any successful career starts with good education. Together with us you will have deeper knowledge of the subjects that will be especially useful for you when climbing the career ladder.</p>
+                <p>Any successful career starts with good education. Together with us <span class="white-title">you will</span> have deeper knowledge of the subjects that will be especially us<span class="white-title">eful for you</span> when climbing the career ladder.</p>
                 <button class="hero-btn">Learn More</button>
             </div>
             <div class="hero-form">
@@ -52,14 +62,14 @@ if (isset($_SESSION['insert'])) {
     <!-- about section start -->
     <section class="container">
         <div class="about-container">
+            <div class="about-image">
+                <img src="assets/images/about.jpg" alt="">
+            </div>
             <div class="offer-content about-content">
                 <h2 class="offer-subtitle">About</h2>
                 <p class="about-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam explicabo corrupti perspiciatis, quo hic eaque aspernatur, sint quasi nesciunt accusamus architecto dolorem quisquam. Maiores dignissimos, vero sit, aperiam quidem quis cumque facilis temporibus beatae optio accusamus eius. Ipsa ad ex voluptatem eius saepe porro iste voluptate, adipisci animi dicta ipsam.</p>
                 <br>
                 <p class="about-title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet vel blanditiis aut odio necessitatibus aspernatur illo, fugit cum, vero rerum eius libero sed laboriosam maiores facere sunt quibusdam officiis! Cupiditate.</p>
-            </div>
-            <div class="about-image">
-                <img src="assets/images/about.jpg" alt="">
             </div>
         </div>
     </section>
@@ -171,15 +181,15 @@ if (isset($_SESSION['insert'])) {
                 <p>We employ highly experienced and qualified teachers who set the ground for all our programs and<br> courses. They are aimed to help you achieve more on your path to success</p>
             </div>
             <div class="teacher-card-group">
-                <?php for ($i = 0; $i <= 5; $i++) { ?>
+                <?php while ($row = $result->fetch_assoc()) { ?>
                     <!-- card-1 -->
                     <div class="teacher-card">
                         <div class="teacher-image">
-                            <img src="assets/images/teacher.jpg" alt="">
+                            <img src="<?php echo "{$row['image']}"; ?>" alt="">
                         </div>
                         <div>
-                            <h4 class="teacher-name">Leslie Alexander</h4>
-                            <h5 class="teacher-position">Tutor</h5>
+                            <h4 class="teacher-name"><?php echo "{$row['name']}"; ?></h4>
+                            <h5 class="teacher-position"><?php echo "{$row['description']}"; ?></h5>
                             <p class="teacher-sub-title">Leslie joined our team in 2010 as a marketing tutor.</p>
                         </div>
                     </div>

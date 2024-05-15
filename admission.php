@@ -39,7 +39,7 @@ $result = $conn->query($Sql);
         <center>
             <h1>Applied For Admission</h1>
             <br><br>
-            <table>
+            <table cellspacing="0" cellpadding="0">
                 <tr>
                     <th>Name</th>
                     <th>Email</th>

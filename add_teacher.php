@@ -4,42 +4,30 @@ if (!isset($_SESSION['login'])) {
     header('location:login.php');
 } elseif ($_SESSION['type'] == 'student') {
     header('location:login.php');
-};
+}
 
+$conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
+if ($conn->connect_error) {
+    die('Connection Error');
+}
 
-if (isset($_POST['add_student'])) {
-    $conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed");
-    }
-
-    $user_name = $_POST['name'];
-    $user_number = $_POST['number'];
-    $user_email = $_POST['email'];
-    $user_password = $_POST['password'];
-    $user_type = "student";
-
-    $check = "SELECT * FROM users WHERE username ='$user_name' ";
-    $check_user = $conn->query($check);
-    $row_count = mysqli_num_rows($check_user);
-    if ($row_count) {
-        echo "<script type='text/javascript'>
-        alert('User Name Already Exist, Try Another One.');
-        </script>";
-    } else {
-
-        $Sql = "INSERT INTO users(username, phone, email, usertype, password) VALUES ('$user_name','$user_number', '$user_email', '$user_type', '$user_password')";
-        $result = $conn->query($Sql);
+if (isset($_POST['add_teacher'])) {
+    $name = $_POST['name'];
+    $message = $_POST['message'];
+    $image = $_FILES['image']['name'];
+    $dst = "assets/images/teacher/" . $_FILES['image']['name'];
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $dst)) {
+        $sql = "INSERT INTO teachers (name, description, image) VALUES ('$name','$message','$dst')";
+        $result = $conn->query($sql);
         if ($result) {
-            header('location:view_student.php');
+            header('location:view_teacher.php');
         } else {
             echo "Failed To Update";
         };
+    } else {
+        echo "Error on uploaded.";
     }
 };
-
 
 ?>
 
@@ -49,7 +37,7 @@ if (isset($_POST['add_student'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Home</title>
+    <title>Admin || Add Teacher</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/home.css">
@@ -68,30 +56,27 @@ if (isset($_POST['add_student'])) {
     <main>
         <!-- content start -->
         <section>
-            <div class="content">
-                <center>
-                    <h1>Add Student</h1>
+            <center>
+                <div class="content">
+                    <h1>Add Teacher</h1>
                     <br>
                     <br>
-                    <form action="#" method="post">
+                    <form action="#" method="POST" enctype="multipart/form-data">
                         <div>
-                            <input type="text" name="name" id="name-field" placeholder="Your Name" class="hero-input">
+                            <input type="text" name="name" id="name-field" placeholder="Teacher Name" class="hero-input">
                         </div>
                         <div>
-                            <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
+                            <textarea name="message" class="message-input" placeholder="Decryption" maxlength="50"></textarea>
                         </div>
                         <div>
-                            <input type="email" name="email" id="email-field" placeholder="Your Email" class="hero-input">
+                            <input type="file" name="image" placeholder="Image" class="hero-input">
                         </div>
                         <div>
-                            <input type="text" name="password" id="password-field" placeholder="Your Password" class="hero-input">
-                        </div>
-                        <div>
-                            <input type="submit" name="add_student" value="Add Student" class="input-submit">
+                            <input type="submit" name="add_teacher" value="Add Teacher" class="input-submit">
                         </div>
                     </form>
-                </center>
-            </div>
+                </div>
+            </center>
         </section>
         <!-- content end -->
     </main>

@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed");
 }
 
-$sql = "SELECT * FROM users WHERE usertype = 'student' ";
+$sql = "SELECT * FROM teachers";
 
 $result = $conn->query($sql);
 
@@ -22,7 +22,7 @@ if (isset($_SESSION['delete'])) {
     alert('Data Deleted Successfully');
     </script>";
     unset($_SESSION['delete']);
-}
+};
 
 ?>
 
@@ -53,29 +53,27 @@ if (isset($_SESSION['delete'])) {
         <section>
             <center>
                 <div class="content">
-                    <h1>All The Student</h1>
+                    <h1>All The Teacher</h1>
                     <br><br>
                     <table cellspacing="0" cellpadding="0">
                         <tr>
-                            <th>User Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Password</th>
+                            <th>Teacher Name</th>
+                            <th>Description</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                         <?php while ($row = $result->fetch_assoc()) { ?>
                             <tr>
-                                <td><?php echo "{$row['username']}"; ?></td>
-                                <td><?php echo "{$row['email']}"; ?></td>
-                                <td><?php echo "{$row['phone']}"; ?></td>
-                                <td><?php echo "{$row['password']}"; ?></td>
+                                <td><?php echo "{$row['name']}"; ?></td>
+                                <td><?php echo "{$row['description']}"; ?></td>
+                                <td><img class="teacher-img" src="<?php echo "{$row['image']}"; ?>" alt=""></td>
                                 <td>
-                                    <a href='delete.php?student_id=<?php echo "{$row['id']}"; ?>' onclick="return confirm(' you want to delete?');">
+                                    <a href='teacher_delete.php?teacher_id=<?php echo "{$row['id']}"; ?>' onclick="return confirm(' you want to delete?');">
                                         <button class="btn-user">
                                             <i class="fa-solid fa-x"></i>
                                         </button>
                                     </a>
-                                    <a href='update.php?student_id=<?php echo "{$row['id']}"; ?>'>
+                                    <a href='teacher_update.php?teacher_id=<?php echo "{$row['id']}"; ?>'>
                                         <button class="btn-user btn-eye">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>

@@ -2,44 +2,37 @@
 session_start();
 if (!isset($_SESSION['login'])) {
     header('location:login.php');
-} elseif ($_SESSION['type'] == 'student') {
+} elseif ($_SESSION['type'] == 'admin') {
     header('location:login.php');
+}
+
+$conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
+if ($conn->connect_error) {
+    die("Connect Error");
 };
 
 
-if (isset($_POST['add_student'])) {
-    $conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
+$email = $_SESSION['email'];
+$sql = "SELECT * FROM users WHERE email = '$email' ";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed");
-    }
-
-    $user_name = $_POST['name'];
-    $user_number = $_POST['number'];
-    $user_email = $_POST['email'];
-    $user_password = $_POST['password'];
-    $user_type = "student";
-
-    $check = "SELECT * FROM users WHERE username ='$user_name' ";
-    $check_user = $conn->query($check);
-    $row_count = mysqli_num_rows($check_user);
-    if ($row_count) {
-        echo "<script type='text/javascript'>
-        alert('User Name Already Exist, Try Another One.');
-        </script>";
+if (isset($_POST['update_student'])) {
+    $update_name = $_POST['name'];
+    $update_number = $_POST['number'];
+    $update_email = $_POST['email'];
+    $update_password = $_POST['password'];
+    $user_email = $_SESSION['email'];
+    $mySql = "UPDATE users SET username='$update_name', phone='$update_number', email='$update_email', password='$update_password' WHERE email = '$user_email' ";
+    $result2 = $conn->query($mySql);
+    if ($result2) {
+        header('location:student_profile.php');
     } else {
-
-        $Sql = "INSERT INTO users(username, phone, email, usertype, password) VALUES ('$user_name','$user_number', '$user_email', '$user_type', '$user_password')";
-        $result = $conn->query($Sql);
-        if ($result) {
-            header('location:view_student.php');
-        } else {
-            echo "Failed To Update";
-        };
-    }
-};
-
+        echo "<script type='text/javascript'>
+        alert('Failed To Update');
+        </script>";
+    };
+}
 
 ?>
 
@@ -49,7 +42,7 @@ if (isset($_POST['add_student'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Home</title>
+    <title>Student || Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/home.css">
@@ -62,36 +55,35 @@ if (isset($_POST['add_student'])) {
 </head>
 
 <body>
-    <?php include('sidebar.php'); ?>
+    <?php include 'student_sidebar.php'; ?>
 
     <!-- main start -->
     <main>
         <!-- content start -->
         <section>
-            <div class="content">
-                <center>
-                    <h1>Add Student</h1>
-                    <br>
-                    <br>
-                    <form action="#" method="post">
+            <center>
+                <div class="content">
+                    <h1>Update Profile</h1>
+                    <br> <br>
+                    <form action="#" method="POST">
                         <div>
-                            <input type="text" name="name" id="name-field" placeholder="Your Name" class="hero-input">
+                            <input type="text" name="name" id="name-field" value="<?php echo "{$row['username']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="number" name="number" id="number-field" placeholder="Phone Number" class="hero-input">
+                            <input type="number" name="number" id="number-field" placeholder="Phone" value="<?php echo "{$row['phone']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="email" name="email" id="email-field" placeholder="Your Email" class="hero-input">
+                            <input type="email" name="email" id="email-field" value="<?php echo "{$row['email']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="text" name="password" id="password-field" placeholder="Your Password" class="hero-input">
+                            <input type="text" name="password" id="password-field" value="<?php echo "{$row['password']}"; ?>" class="hero-input">
                         </div>
                         <div>
-                            <input type="submit" name="add_student" value="Add Student" class="input-submit">
+                            <input type="submit" name="update_student" value="Update Student" class="input-submit update-submit">
                         </div>
                     </form>
-                </center>
-            </div>
+                </div>
+            </center>
         </section>
         <!-- content end -->
     </main>

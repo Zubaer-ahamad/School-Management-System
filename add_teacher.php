@@ -65,8 +65,23 @@ if (isset($_POST['add_teacher'])) {
                         <div>
                             <input type="text" name="name" id="name-field" placeholder="Teacher Name" class="hero-input">
                         </div>
-                        <div>
-                            <textarea name="message" class="message-input" placeholder="Decryption" maxlength="50"></textarea>
+                        <div class="text-editor">
+                            <div class="editor-btn-group">
+                                <div>
+                                    <button id="btn-align-left" class="editor-btn"><i class="fa-solid fa-align-left"></i></button>
+                                    <button id="btn-align-right" class="editor-btn"><i class="fa-solid fa-align-right"></i></button>
+                                    <button id="btn-align-justify" class="editor-btn"><i class="fa-solid fa-align-justify"></i></button>
+                                    <button id="btn-align-center" class="editor-btn"><i class="fa-solid fa-align-center"></i></button>
+                                </div>
+                                <h4 class="editor-title">Text Editor</h4>
+                                <div>
+                                    <button id="btn-bold" class="editor-btn"><i class="fa-solid fa-bold"></i></button>
+                                    <button id="btn-italic" class="editor-btn"><i class="fa-solid fa-italic"></i></button>
+                                    <input type="color" class="editor-btn" id="colorPicker">
+                                </div>
+                            </div>
+                            <textarea name="message" id="decryption-field" class="message-input" placeholder="Decryption" maxlength="200"></textarea>
+                            <!-- <textarea name="message" class="message-input" placeholder="Decryption" maxlength="50"></textarea> -->
                         </div>
                         <div>
                             <input type="file" name="image" placeholder="Image" class="hero-input">
@@ -81,6 +96,9 @@ if (isset($_POST['add_teacher'])) {
         <!-- content end -->
     </main>
     <!-- main end -->
+
+
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

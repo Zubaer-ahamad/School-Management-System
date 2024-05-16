@@ -23,6 +23,10 @@ while ($row = $result->fetch_assoc()) {
                 $_SESSION['type'] = 'student';
                 $_SESSION['email'] = "$email";
                 header('location:student.php');
+            } elseif ($row['usertype'] == 'parents') {
+                $_SESSION['type'] = 'parents';
+                $_SESSION['email'] = "$email";
+                header('location:parents_home.php');
             }
         }
     };

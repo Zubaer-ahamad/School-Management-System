@@ -28,10 +28,10 @@
             <div>
                 <ul class="header-icon" id="header-icon">
                     <li><a href="index.php">HOME</a></li>
+                    <li><a href="parents.php">PARENTS</a></li>
                     <li><a href="#">COURSES</a></li>
                     <li><a href="#">FEATURES</a></li>
                     <li><a href="#">EVENTS</a></li>
-                    <li><a href="#">BLOG</a></li>
                     <li><a href="#">CONTACT</a></li>
                     <?php session_start();
                     if (isset($_SESSION['login'])) {

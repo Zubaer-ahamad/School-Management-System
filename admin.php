@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['login'])) {
     header('location:login.php');
-} elseif ($_SESSION['type'] == 'student') {
+} elseif ($_SESSION['type'] == 'student' || $_SESSION['type'] == 'parents') {
     header('location:login.php');
 }
 ?>

@@ -15,7 +15,7 @@
  <aside>
      <ul>
          <li><a href="student_profile.php">My Profile</a></li>
-         <li><a href="">My Courses</a></li>
+         <li><a href="my_courses.php">My Courses</a></li>
          <li><a href="">View Result</a></li>
      </ul>
  </aside>

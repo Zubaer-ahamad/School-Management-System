@@ -18,6 +18,11 @@ $sql = "SELECT * FROM teachers";
 
 $result = $conn->query($sql);
 
+
+$courses_sql = "SELECT * FROM courses";
+
+$courses_result = $conn->query($courses_sql);
+
 ?>
 
 
@@ -125,48 +130,18 @@ $result = $conn->query($sql);
                 <p>Our featured courses are selected through a rigorous process and uniquely created for each semester.<br> They cover a lot of topics and are available both online and offline.</p>
             </div>
             <div class="featured-card-group">
-                <?php for ($i = 0; $i <= 2; $i++) { ?>
+                <?php while ($item = $courses_result->fetch_assoc()) { ?>
                     <!-- card-1 -->
                     <div class="featured-card">
                         <div class="featured-card-image">
-                            <img src="assets/images/marketing.jpg" alt="">
+                            <img src="<?php echo "{$item['course_image']}"; ?>" alt="">
                         </div>
                         <div class="featured-card-content">
-                            <h3 class="offer-card-content-title">Online Marketing</h3>
-                            <p>Ronal Richard</p>
+                            <h3 class="offer-card-content-title"><?php echo "{$item['course_name']}"; ?></h3>
+                            <p><?php echo "{$item['course_detailes']}"; ?></p>
                         </div>
                     </div>
-                    <!-- card-2 -->
-                    <div class="featured-card">
-                        <div class="featured-card-image">
-                            <img src="assets/images/hr.jpg" alt="">
-                        </div>
-                        <div class="featured-card-content">
-                            <h3 class="offer-card-content-title">HR Management</h3>
-                            <p>Ralph Edward</p>
-                        </div>
-                    </div>
-                    <!-- card-3 -->
-                    <div class="featured-card">
-                        <div class="featured-card-image">
-                            <img src="assets/images/finance.jpg" alt="">
-                        </div>
-                        <div class="featured-card-content">
-                            <h3 class="offer-card-content-title">Financial Analysis</h3>
-                            <p>Emma Smith</p>
-                        </div>
-                    </div>
-                    <!-- card-4 -->
-                    <div class="featured-card">
-                        <div class="featured-card-image">
-                            <img src="assets/images/web.jpg" alt="">
-                        </div>
-                        <div class="featured-card-content">
-                            <h3 class="offer-card-content-title">Web Technology</h3>
-                            <p>Karyn Murphy</p>
-                        </div>
-                    </div>
-                <?php } ?>
+                <?php  } ?>
             </div>
         </div>
     </section>

@@ -3,12 +3,14 @@
 session_start();
 
 $conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
-if ($conn == false) {
+if ($conn->connect_error) {
     die('Connection Error');
 };
 
 $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
+
+$found_user = false;
 
 while ($row = $result->fetch_assoc()) {
     if (isset($_POST['submit'])) {
@@ -28,6 +30,12 @@ while ($row = $result->fetch_assoc()) {
                 $_SESSION['email'] = "$email";
                 header('location:parents_home.php');
             }
+            $found_user = true;
+            break;
         }
-    };
+    }
 };
+
+if (!$found_user) {
+    header('location:login.php');
+}

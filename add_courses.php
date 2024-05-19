@@ -4,30 +4,30 @@ if (!isset($_SESSION['login'])) {
     header('location:login.php');
 } elseif ($_SESSION['type'] == 'student') {
     header('location:login.php');
-}
+};
 
 $conn = new mysqli('localhost', 'root', '', 'schoolmanagement');
 if ($conn->connect_error) {
     die('Connection Error');
-}
+};
 
-if (isset($_POST['add_teacher'])) {
-    $name = $_POST['name'];
-    $message = $_POST['message'];
-    $image = $_FILES['image']['name'];
-    $dst = "assets/images/teacher/" . $_FILES['image']['name'];
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $dst)) {
-        $sql = "INSERT INTO teachers (name, description, image) VALUES ('$name','$message','$dst')";
+if (isset($_POST['add_courses'])) {
+    $course_name = $_POST['name'];
+    $course_decryption = $_POST['decryption'];
+    $course_file = $_FILES['course-file']['name'];
+    $dst = "assets/images/courses" . $_FILES['course-file']['name'];
+    if (move_uploaded_file($_FILES['course-file']['tmp_name'], $dst)) {
+        $sql = "INSERT INTO courses(course_name, course_detailes, course_image) VALUES ('$course_name','$course_decryption','$dst')";
         $result = $conn->query($sql);
         if ($result) {
-            header('location:view_teacher.php');
+            header('location:view_courses.php');
         } else {
             echo "Failed To Update";
         };
     } else {
         echo "Error on uploaded.";
     }
-};
+}
 
 ?>
 
@@ -37,7 +37,7 @@ if (isset($_POST['add_teacher'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Add Teacher</title>
+    <title>Admin || Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/home.css">
@@ -56,32 +56,31 @@ if (isset($_POST['add_teacher'])) {
     <main>
         <!-- content start -->
         <section>
-            <center>
-                <div class="content">
-                    <h1>Add Teacher</h1>
+            <div class="content">
+                <center>
+                    <h1>Add Courses</h1>
                     <br>
                     <br>
                     <form action="#" method="POST" enctype="multipart/form-data">
                         <div>
-                            <input type="text" name="name" id="name-field" placeholder="Teacher Name" class="hero-input">
+                            <input type="text" name="name" id="name-field" placeholder="Course Name" class="hero-input">
                         </div>
                         <div>
-                            <textarea rows="" name="message" id="decryption-field" class="tinymce" placeholder="Teacher Decryption" maxlength="200"></textarea>
+                            <textarea rows="" name="decryption" id="decryption-field" class="tinymce" placeholder="Courses Decryption" maxlength="200"></textarea>
                         </div>
                         <div>
-                            <input type="file" name="image" placeholder="Image" class="hero-input teacher-file-img">
+                            <input type="file" name="course-file" class="hero-input">
                         </div>
                         <div>
-                            <input type="submit" name="add_teacher" value="Add Teacher" class="input-submit">
+                            <input type="submit" name="add_courses" value="Add Courses" class="input-submit">
                         </div>
                     </form>
-                </div>
-            </center>
+                </center>
+            </div>
         </section>
         <!-- content end -->
     </main>
     <!-- main end -->
-
 
     <script src="assets/js/tinymce/tinymce.min.js"></script>
     <script src="assets/js/tinymce/init-tinymce.js"></script>
